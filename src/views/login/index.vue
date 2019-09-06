@@ -62,6 +62,7 @@
 <script>
 import { getVerifyCode, userLogin, judgeCode } from '@/api/login'
 import { Message } from 'element-ui'
+import { setToken } from '@/utils/auth'
 
 export default {
   name: 'Login',
@@ -138,9 +139,10 @@ export default {
         if (valid) {
           this.loading = true
           userLogin(this.loginForm).then(response => {
-            if (response.status === 'SUCCESS' && response.data === null) {
+            if (response.status === 'SUCCESS') {
+              setToken(response.data.token)
               this.$router.push({ path: this.redirect || '/' })
-            } else if (response.status === 'SUCCESS' && response.data !== null) {
+            } else if (response.status === 'FAULT' && response.data !== null) {
               this.verifyCodeUrl = response.data.url
             } else {
               Message({
