@@ -57,7 +57,7 @@
                 allList: [],
                 schArr: [],
                 sch_order: '',
-                sch_status: 0,
+                sch_status: -1,
                 currentPage: 1,
                 pageSize: 10,
                 total: 0,

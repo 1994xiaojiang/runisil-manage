@@ -25,6 +25,8 @@
                         <el-button type="primary" @click="editTable(scope.$index, scope.row)">编辑</el-button>
                         <el-button type="success" @click="toSuccess(scope.row)"
                                    :disabled="scope.row.status === 1">发布</el-button>
+                        <el-button type="danger" @click="toDelete(scope.row)"
+                                   :disabled="!(scope.row.status === 1 && scope.row.status !== 0)">下架</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -38,7 +40,7 @@
 </template>
 
 <script>
-    import { getCustomizePageList } from '@/api/customizePage'
+    import { getCustomizePageList,addOrEditPage } from '@/api/customizePage'
 
     export default {
         name: "customize-page",
@@ -116,21 +118,38 @@
                 })
             },
             toSuccess(row) {
-                // updateStatusProduct({id:row.id,status:1}).then( res=>{
-                //     if(res.status === 'SUCCESS'){
-                //         this._getPageTab2();
-                //         this.$notify({
-                //             title: '成功',
-                //             message: '该产品已成功发布到网站',
-                //             type: 'success'
-                //         })
-                //
-                //     }else{
-                //         this.$message.error(res.msg);
-                //     }
-                // }).catch(error => {
-                //     this.$message.error(error);
-                // });
+                addOrEditPage({id:row.id,status:1}).then( res=>{
+                    if(res.status === 'SUCCESS'){
+                        this.getCustomizePageList();
+                        this.$notify({
+                            title: '成功',
+                            message: '该网页内容已成功发布到网站',
+                            type: 'success'
+                        })
+
+                    }else{
+                        this.$message.error(res.msg);
+                    }
+                }).catch(error => {
+                    this.$message.error(error);
+                });
+            },
+            toDelete(row) {
+                addOrEditPage({id:row.id,status:2}).then( res=>{
+                    if(res.status === 'SUCCESS'){
+                        this.getCustomizePageList();
+                        this.$notify({
+                            title: '成功',
+                            message: '该网页内容已成功从网站下架',
+                            type: 'success'
+                        })
+
+                    }else{
+                        this.$message.error(res.msg);
+                    }
+                }).catch(error => {
+                    this.$message.error(error);
+                });
             },
             // 编辑
             editTable(index, row) {

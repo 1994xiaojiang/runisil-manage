@@ -11,3 +11,8 @@ export function getCustomizeContent(id) {
 export function saveOrupdate(data) {
     return axios.post("manager/saveOrUpdateCustomize",data);
 }
+
+export function addOrEditPage(data) {
+    return axios.post("manager/addOrEditPage",data);
+}
+
