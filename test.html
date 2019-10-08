@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<button>获取外部内容</button>
+</body>
+<script>
+    $("button").click(function(){
+        var fromurl = "http://pyl87n817.bkt.clouddn.com/getcode.html";
+        var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxff406d56cd4f47af&redirect_uri='+encodeURIComponent(fromurl)+'&response_type=code&scope=snsapi_base&state=STATE%23wechat_redirect&connect_redirect=1#wechat_redirect';
+        window.location.href = url;
+
+    });
+</script>
+</html>
