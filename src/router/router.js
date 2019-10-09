@@ -100,7 +100,16 @@ export const asyncRoutes = [
                 path: 'news-page',
                 name: 'NewsPage',
                 component: () => import('@/views/website/news/news-page'),
-                meta: {title: '新闻页管理', icon: 'el-icon-s-tools'}
+                meta: {title: '新闻页管理', icon: 'el-icon-s-tools'},
+                children: [
+                    {
+                        path: 'news-edit-page',
+                        name: 'NewsEditPage',
+                        component: () => import('@/views/website/news/news-edit-page'),
+                        meta: {title: '编辑产品', icon: 'el-icon-user'},
+                        hidden: true
+                    },
+                ]
             },
             {
                 path: 'application-page',

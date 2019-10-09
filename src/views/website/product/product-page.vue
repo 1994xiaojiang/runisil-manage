@@ -57,13 +57,12 @@
                 allList: [],
                 schArr: [],
                 sch_order: '',
-                sch_status: -1,
+                sch_status: null,
                 currentPage: 1,
                 pageSize: 10,
                 total: 0,
                 pageSizes: [10, 20, 30, 40],
                 diaIsShow: false,
-                formData: {},
                 editType: '',
                 options: [
                     { label: '草稿', value: 0 },
@@ -83,7 +82,7 @@
         },
         watch: {
             $route(to, from) {
-                if(from.path === '/website/product-page/product-edit-page'){
+                if(to.path === '/website/product-page'){
                     this._getPageTab2()
                 }
             }
@@ -257,3 +256,4 @@
         color: #fff;
     }
 </style>
+
