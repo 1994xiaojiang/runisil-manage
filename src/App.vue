@@ -41,4 +41,7 @@
         max-width: 400px;
         line-height: 180%;
     }
+    .el-textarea__inner{
+        font-family: Arial,serif;
+    }
 </style>

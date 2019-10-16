@@ -115,7 +115,16 @@ export const asyncRoutes = [
                 path: 'application-page',
                 name: 'ApplicationPage',
                 component: () => import('@/views/website/application/application-page'),
-                meta: {title: '应用页管理', icon: 'el-icon-s-tools'}
+                meta: {title: '应用页管理', icon: 'el-icon-s-tools'},
+                children: [
+                    {
+                        path: 'application-edit-page',
+                        name: 'ApplicationEditPage',
+                        component: () => import('@/views/website/application/application-edit-page'),
+                        meta: {title: '编辑应用页', icon: 'el-icon-user'},
+                        hidden: true
+                    },
+                ]
             }
         ]
     },
@@ -136,7 +145,7 @@ export const asyncRoutes = [
                 path: 'order-list',
                 name: 'OrderList',
                 component: () => import('@/views/webdata/order-list'),
-                meta: {title: '订单列表', icon: 'el-icon-s-tools'}
+                meta: {title: '样品订单列表', icon: 'el-icon-s-tools'}
             }
         ]
     },

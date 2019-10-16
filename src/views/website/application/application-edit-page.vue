@@ -2,19 +2,19 @@
     <div class="className">
         <el-card class="anoCard">
             <div slot="header">
-                <span style="font-weight: 600;font-size: 20px;">编辑产品</span>
+                <span style="font-weight: 600;font-size: 20px;">编辑应用信息</span>
             </div>
             <el-row :gutter="20">
                 <el-col :span="8">
                     <div class="grid-content bg-purple">
                         <el-form ref="form" :model="form" label-width="80px">
-                            <el-form-item label="产品名称">
+                            <el-form-item label="应用标题">
                                 <el-input v-model="form.name"></el-input>
                             </el-form-item>
-                            <el-form-item label="产品描述">
+                            <el-form-item label="应用描述">
                                 <el-input type="textarea" v-model="form.description" rows="4"></el-input>
                             </el-form-item>
-                            <el-form-item label="产品封面" >
+                            <el-form-item label="应用封面" >
                                 <div style="width: 300px; padding-top: 0;">
                                     <el-upload
                                             class="avatar-uploader"
@@ -30,7 +30,7 @@
                                 </div>
                             </el-form-item>
                             <el-form-item style="text-align: center;">
-                                <el-button type="success" icon="el-icon-circle-plus-outline" @click="saveProducts()">保存产品</el-button>
+                                <el-button type="success" icon="el-icon-circle-plus-outline" @click="saveProducts()">保存信息</el-button>
                                 <el-button type="primary" icon="el-icon-view" style="margin-bottom: 20px;" @click="showdialog()">预览</el-button>
                             </el-form-item>
                         </el-form>
@@ -39,7 +39,7 @@
                 <el-col :span="16">
 
                     <div style="width: 900px;margin: 0 auto;">
-                        <p style="font-size: 14px;margin-bottom: 10px;color: #606266;">产品详情页编辑</p>
+                        <p style="font-size: 14px;margin-bottom: 10px;color: #606266;">应用详情页编辑</p>
                         <tinymce-editor v-model="form.summary" ref="editor"></tinymce-editor>
                     </div>
                 </el-col>
@@ -59,10 +59,10 @@
 
 <script>
     import TinymceEditor from '@/components/tinymce/tinymce-editor'
-    import {getProductAllById,saveOrUpdateProduct} from '@/api/product'
+    import { getApplicationAllById,saveOrUpdateApplication } from '@/api/application'
 
     export default {
-        name: "product-edit-page",
+        name: "application-edit-page",
         components: {
             TinymceEditor
         },
@@ -96,8 +96,8 @@
                 }
             },
             getProductDetail() {
-                this.form.id = this.$route.query.productId;
-                getProductAllById(this.form.id).then(res => {
+                this.form.id = this.$route.query.id;
+                getApplicationAllById(this.form.id).then(res => {
                     this.form.name = res.data.name;
                     this.form.description = res.data.description;
                     this.form.imageUrl = res.data.imageUrl;
@@ -114,10 +114,10 @@
                 this.form.summary = output;
             },
             saveProducts(){
-                saveOrUpdateProduct(this.form).then(res => {
+                saveOrUpdateApplication(this.form).then(res => {
                     if(res.status === 'SUCCESS'){
                         this.$message.success(res.msg);
-                        this.$router.push("/website/product-page")
+                        this.$router.push("/website/application-page")
                     }else{
                         this.$message.error(res.msg);
                     }
