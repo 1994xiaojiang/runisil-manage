@@ -6,7 +6,7 @@
                     <span style="font-weight: 600;font-size: 20px;">联系人列表</span>
                 </div>
                 <div class="searchDiv">
-                    <el-input type="text" placeholder="请输入联系人名称" class="width1" v-model="sch_order"></el-input>
+                    <el-input type="text" placeholder="请输入联系人姓名" class="input-style" v-model="sch_order"></el-input>
                     <el-button type="primary" icon="el-icon-search" @click="searchTab()">搜索</el-button>
                 </div>
 
@@ -14,86 +14,73 @@
                     <el-table-column type="expand">
                         <template slot-scope="props">
                             <el-form label-position="left" inline class="demo-table-expand">
-
                                 <el-row>
-                                    <el-col :span="12">
-                                        <el-form-item label="姓名">
+                                    <el-col :span="6">
+                                        <el-form-item label="姓名：">
                                             <span>{{ props.row.firstName + '·' + props.row.surname }}</span>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :span="12">
-                                        <el-form-item label="称呼">
+                                    <el-col :span="6">
+                                        <el-form-item label="邮箱：">
+                                            <span>{{ props.row.email }}</span>
+                                        </el-form-item>
+                                    </el-col>
+                                    <el-col :span="6">
+                                        <el-form-item label="称呼：">
                                             <span>{{ props.row.salutation }}</span>
                                         </el-form-item>
                                     </el-col>
-                                </el-row>
-                                <el-row>
-                                    <el-col :span="12">
-                                        <el-form-item label="公司">
+                                    <el-col :span="6">
+                                        <el-form-item label="公司名称：">
                                             <span>{{ props.row.company }}</span>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :span="12">
-                                        <el-form-item label="邮政编码">
-                                            <span>{{ props.row.zipCode }}</span>
-                                        </el-form-item>
-                                    </el-col>
                                 </el-row>
                                 <el-row>
-                                    <el-col :span="12">
-                                        <el-form-item label="国家">
+                                    <el-col :span="6">
+                                        <el-form-item label="国家：">
                                             <span>{{ props.row.country }}</span>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :span="12">
-                                        <el-form-item label="省份">
+                                    <el-col :span="6">
+                                        <el-form-item label="省份：">
                                             <span>{{ props.row.state }}</span>
                                         </el-form-item>
                                     </el-col>
-                                </el-row>
-                                <el-row>
-                                    <el-col :span="12">
-                                        <el-form-item label="城市">
+                                    <el-col :span="6">
+                                        <el-form-item label="城市：">
                                             <span>{{ props.row.city }}</span>
                                         </el-form-item>
                                     </el-col>
-
-                                    <el-col :span="12">
-                                        <el-form-item label="街道">
+                                    <el-col :span="6">
+                                        <el-form-item label="街道：">
                                             <span>{{ props.row.street }}</span>
                                         </el-form-item>
                                     </el-col>
                                 </el-row>
                                 <el-row>
-                                    <el-col :span="12">
-                                        <el-form-item label="邮箱">
-                                            <span>{{ props.row.email }}</span>
+                                    <el-col :span="6">
+                                        <el-form-item label="邮政编码：">
+                                            <span>{{ props.row.zipCode }}</span>
                                         </el-form-item>
                                     </el-col>
-                                    <el-col :span="12">
-                                        <el-form-item label="电话">
+                                    <el-col :span="6">
+                                        <el-form-item label="传真：">
+                                            <span>{{ props.row.fax }}</span>
+                                        </el-form-item>
+                                    </el-col>
+                                    <el-col :span="6">
+                                        <el-form-item label="移动电话：">
+                                            <span>{{ props.row.mobilePhone }}</span>
+                                        </el-form-item>
+                                    </el-col>
+                                    <el-col :span="6">
+                                        <el-form-item label="电话：">
                                             <span>{{ props.row.phone }}</span>
                                         </el-form-item>
                                     </el-col>
                                 </el-row>
-                                <el-row>
-                                    <el-col :span="8">
-                                        <el-form-item label="传真">
-                                            <span>{{ props.row.fax }}</span>
-                                        </el-form-item>
-                                    </el-col>
-                                    <el-col :span="8">
-                                        <el-form-item label="移动电话">
-                                            <span>{{ props.row.mobilePhone }}</span>
-                                        </el-form-item>
-                                    </el-col>
-                                    <el-col :span="8">
-                                        <el-form-item label="联系公司名称">
-                                            <span>{{ props.row.companyName }}</span>
-                                        </el-form-item>
-                                    </el-col>
-                                </el-row>
-                                <el-form-item label="信息">
+                                <el-form-item label="信息：">
                                     <span>{{ props.row.message }}</span>
                                 </el-form-item>
                             </el-form>
@@ -104,16 +91,24 @@
                             prop="id">
                     </el-table-column>
                     <el-table-column
-                            label="姓名"
-                            prop="(firstName + '·' + surname)">
+                            label="姓氏"
+                            prop="surname">
                     </el-table-column>
                     <el-table-column
-                            label="公司"
+                            label="名字"
+                            prop="firstName">
+                    </el-table-column>
+                    <el-table-column
+                            label="公司名称"
                             prop="company">
                     </el-table-column>
                     <el-table-column
                             label="邮箱"
                             prop="email">
+                    </el-table-column>
+                    <el-table-column
+                            label="时间"
+                            prop="createTime">
                     </el-table-column>
                 </el-table>
                 <el-pagination background layout="total, sizes, prev, pager, next" :page-sizes="pageSizes"
@@ -127,7 +122,7 @@
 </template>
 
 <script>
-    import { getProjectPage,getProductsPageByValue,updateStatusProduct } from '@/api/product'
+    import { getContactList } from '@/api/list'
     export default {
         name: "contact-page",
         data() {
@@ -161,7 +156,7 @@
                 this.getPageData()
             },
             getPageTable() {
-                getProjectPage({current:this.currentPage,size:this.pageSize})
+                getContactList({current:this.currentPage,size:this.pageSize},"contact")
                     .then(res => {
                         if(res.status === 'SUCCESS'){
                             this.allList = res.data.records;
@@ -182,19 +177,19 @@
             },
             // 查找
             searchTab() {
-                getProductsPageByValue({current:this.currentPage,size:this.pageSize},
-                    this.sch_order,this.sch_status).then(res => {
-                    if(res.status === 'SUCCESS'){
-                        this.allList = res.data.records;
-                        this.schArr = this.allList;
-                        this.getPageData();
-                        this.total = res.data.total
-                    }else{
-                        this.$message.error(res.message)
-                    }
-                }).catch(error =>{
-                    this.$message.error(error.message)
-                });
+                // getProductsPageByValue({current:this.currentPage,size:this.pageSize},
+                //     this.sch_order,this.sch_status).then(res => {
+                //     if(res.status === 'SUCCESS'){
+                //         this.allList = res.data.records;
+                //         this.schArr = this.allList;
+                //         this.getPageData();
+                //         this.total = res.data.total
+                //     }else{
+                //         this.$message.error(res.message)
+                //     }
+                // }).catch(error =>{
+                //     this.$message.error(error.message)
+                // });
 
                 this.getPageData()
             },
@@ -213,5 +208,15 @@
         margin-right: 0;
         margin-bottom: 0;
         width: 50%;
+    }
+    .input-style{
+        width: 180px;
+        margin-right: 10px;
+    }
+    .searchDiv {
+        margin-bottom: 20px;
+        .el-button {
+            padding: 11px 20px;
+        }
     }
 </style>

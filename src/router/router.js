@@ -39,23 +39,35 @@ export const currencyRoutes = [
 
 export const asyncRoutes = [
     {
-        path: '/permission',
-        name: 'Permission',
+        path: '/webdata',
+        name: 'Webdata',
         component: Layout,
-        redirect: '/permission/page-user',
-        meta: {title: '权限许可', icon: 'el-icon-lock'},
+        redirect: '/webdata/contact-page',
+        meta: { title: '网站资源', icon: 'el-icon-lock'},
         children: [
             {
-                path: 'page-user',
-                name: 'PageUser',
-                component: () => import('@/views/permission/page-user'),
-                meta: {title: '用户管理', icon: 'el-icon-user'}
+                path: 'contact-page',
+                name: 'ContactPage',
+                component: () => import('@/views/webdata/contact-page'),
+                meta: {title: '联系人列表', icon: 'el-icon-s-tools'}
             },
             {
-                path: 'roles',
-                name: 'Roles',
-                component: () => import('@/views/permission/roles'),
-                meta: {title: '权限设置', icon: 'el-icon-s-tools'}
+                path: 'order-list',
+                name: 'OrderList',
+                component: () => import('@/views/webdata/order-list'),
+                meta: {title: '样品订单列表', icon: 'el-icon-s-tools'}
+            },
+            {
+                path: 'order-list',
+                name: 'OrderList',
+                component: () => import('@/views/webdata/order-list'),
+                meta: {title: '文件管理', icon: 'el-icon-s-tools'}
+            },
+            {
+                path: 'order-list',
+                name: 'OrderList',
+                component: () => import('@/views/webdata/order-list'),
+                meta: {title: '图片管理', icon: 'el-icon-s-tools'}
             }
         ]
     },
@@ -66,6 +78,12 @@ export const asyncRoutes = [
         redirect: '/website/product-page',
         meta: {title: '网站管理', icon: 'el-icon-lock'},
         children: [
+            {
+                path: 'home-page',
+                name: 'HomePage',
+                component: () => import('@/views/website/home/home-page'),
+                meta: {title: '首页管理', icon: 'el-icon-user'}
+            },
             {
                 path: 'product-page',
                 name: 'ProductPage',
@@ -129,23 +147,23 @@ export const asyncRoutes = [
         ]
     },
     {
-        path: '/webdata',
-        name: 'Webdata',
+        path: '/permission',
+        name: 'Permission',
         component: Layout,
-        redirect: '/webdata/contact-page',
-        meta: { title: '网站数据', icon: 'el-icon-lock'},
+        redirect: '/permission/page-user',
+        meta: {title: '权限许可', icon: 'el-icon-lock'},
         children: [
             {
-                path: 'contact-page',
-                name: 'ContactPage',
-                component: () => import('@/views/webdata/contact-page'),
-                meta: {title: '联系人列表', icon: 'el-icon-s-tools'}
+                path: 'page-user',
+                name: 'PageUser',
+                component: () => import('@/views/permission/page-user'),
+                meta: {title: '用户管理', icon: 'el-icon-user'}
             },
             {
-                path: 'order-list',
-                name: 'OrderList',
-                component: () => import('@/views/webdata/order-list'),
-                meta: {title: '样品订单列表', icon: 'el-icon-s-tools'}
+                path: 'roles',
+                name: 'Roles',
+                component: () => import('@/views/permission/roles'),
+                meta: {title: '权限设置', icon: 'el-icon-s-tools'}
             }
         ]
     },
