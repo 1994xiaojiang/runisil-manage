@@ -9,16 +9,21 @@ const service = axios.create({
     timeout: 10000, // 请求超时时间
     withCredentials: true
 })
-
+let loading;
 // request 拦截器
 service.interceptors.request.use(
     config => {
         // 这里可以自定义一些config 配置
+        loading = Loading.service({
+            lock: true,
+            text: '加载中……',
+            background: 'rgba(0, 0, 0, 0.8)'
+        })
         return config
     },
     error => {
         //  这里处理一些请求出错的情况
-        console.log(error);
+        loading.close();
         Promise.reject(error)
     }
 );
@@ -27,12 +32,12 @@ service.interceptors.request.use(
 service.interceptors.response.use(
     response => {
         // 这里处理一些response 正常放回时的逻辑
+        loading.close();
         return response.data
     },
     error => {
         // 这里处理一些response 出错时的逻辑
-
-
+        loading.close();
         if (error.response) {
             switch (error.response.status) {
                 case 401:

@@ -98,11 +98,11 @@
         methods:{
             handleSize(val) {
                 this.pageSize = val;
-                this.getPageData()
+                this.getCustomizePageList()
             },
             handlePage(val) {
                 this.currentPage = val;
-                this.getPageData()
+                this.getCustomizePageList()
             },
             getCustomizePageList(){
                 getCustomizePageList({current:this.currentPage,size:this.pageSize}).then(res => {

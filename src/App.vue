@@ -44,4 +44,13 @@
     .el-textarea__inner{
         font-family: Arial,serif;
     }
+    .upload-demo{
+        width: 100%;
+    }
+    .el-upload{
+        width: 100%;
+    }
+    .el-upload-dragger{
+        width: 100%;
+    }
 </style>

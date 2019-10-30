@@ -112,19 +112,17 @@
         methods: {
             handleSize(val) {
                 this.pageSize = val;
-                this.getPageData()
+                this._getPageTab2()
             },
             handlePage(val) {
                 this.currentPage = val;
-                this.getPageData()
+                this._getPageTab2()
             },
             _getPageTab2() {
                 getApplicationPage({current:this.currentPage,size:this.pageSize})
                     .then(res => {
                         if(res.status === 'SUCCESS'){
-                            this.allList = res.data.records;
-                            this.schArr = this.allList;
-                            this.getPageData();
+                            this.tableData = res.data.records;
                             this.total = res.data.total
                         }else{
                             this.$message.error(res.msg)
@@ -133,19 +131,12 @@
                     this.$message.error(error.message)
                 })
             },
-            getPageData() {
-                let start = (this.currentPage - 1) * this.pageSize;
-                let end = start + this.pageSize;
-                this.tableData = this.schArr.slice(start, end)
-            },
             // 查找
             searchTab() {
                 getApplicationPageByValue({current:this.currentPage,size:this.pageSize},
                     this.sch_order,this.sch_status).then(res => {
                     if(res.status === 'SUCCESS'){
-                        this.allList = res.data.records;
-                        this.schArr = this.allList;
-                        this.getPageData();
+                        this.tableData = res.data.records;
                         this.total = res.data.total
                     }else{
                         this.$message.error(res.message)
@@ -153,8 +144,6 @@
                 }).catch(error =>{
                     this.$message.error(error.message)
                 });
-
-                this.getPageData()
             },
             // add
             addTab() {
@@ -198,13 +187,6 @@
             },
             // 编辑
             editTable(index, row) {
-                // this.formData = Object.assign({}, row)
-                // this.editType = 'update'
-                // this.diaIsShow = true
-                // this.$nextTick(() => {
-                //     this.$refs.diaForm.clearValidate()
-                // })
-                // this.rowIndex = index
                 this.$router.push({
                     path: "/website/application-page/application-edit-page?type=edit&id=" + row.id
                 })

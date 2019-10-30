@@ -55,8 +55,6 @@
         data(){
             return{
                 tableData: [],
-                allList: [],
-                schArr: [],
                 sch_str: '',
                 sch_status: null,
                 currentPage: 1,
@@ -111,9 +109,7 @@
             getNewsByPage(){
                 getNewsByPage({current:this.currentPage,size:this.pageSize}).then(res=>{
                     if(res.status === 'SUCCESS'){
-                        this.allList = res.data.records;
-                        this.schArr = this.allList;
-                        this.getPageData();
+                        this.tableData = res.data.records;
                         this.total = res.data.total
                     }else{
                         this.$message.error(res.msg)
@@ -121,11 +117,6 @@
                 }).catch(error => {
                     this.$message.error(error.msg)
                 })
-            },
-            getPageData() {
-                let start = (this.currentPage - 1) * this.pageSize;
-                let end = start + this.pageSize;
-                this.tableData = this.schArr.slice(start, end)
             },
             addNews(){
                 this.$router.push({
@@ -135,9 +126,7 @@
             searchNews(){
                 searchNews({current:this.currentPage,size:this.pageSize},this.sch_str,this.sch_status).then(res=>{
                     if(res.status === 'SUCCESS'){
-                        this.allList = res.data.records;
-                        this.schArr = this.allList;
-                        this.getPageData();
+                        this.tableData = res.data.records;
                         this.total = res.data.total
                     }else{
                         this.$message.error(res.message)
@@ -187,11 +176,11 @@
             },
             handleSize(val) {
                 this.pageSize = val;
-                this.getPageData()
+                this.getNewsByPage()
             },
             handlePage(val) {
                 this.currentPage = val;
-                this.getPageData()
+                this.getNewsByPage()
             },
         }
     }

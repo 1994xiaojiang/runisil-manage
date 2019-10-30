@@ -58,15 +58,15 @@ export const asyncRoutes = [
                 meta: {title: '样品订单列表', icon: 'el-icon-s-tools'}
             },
             {
-                path: 'order-list',
-                name: 'OrderList',
-                component: () => import('@/views/webdata/order-list'),
+                path: 'file-list',
+                name: 'FileList',
+                component: () => import('@/views/webdata/file-list'),
                 meta: {title: '文件管理', icon: 'el-icon-s-tools'}
             },
             {
-                path: 'order-list',
-                name: 'OrderList',
-                component: () => import('@/views/webdata/order-list'),
+                path: 'image-list',
+                name: 'ImageList',
+                component: () => import('@/views/webdata/image-list'),
                 meta: {title: '图片管理', icon: 'el-icon-s-tools'}
             }
         ]
@@ -100,21 +100,6 @@ export const asyncRoutes = [
                 ]
             },
             {
-                path: 'customize-page',
-                name: 'CustomizePage',
-                component: () => import('@/views/website/customize/customize-page'),
-                meta: {title: '自定义页管理', icon: 'el-icon-s-tools'},
-                children: [
-                    {
-                        path: 'customize-edit-page',
-                        name: 'CustomizeEditPage',
-                        component: () => import('@/views/website/customize/customize-edit-page'),
-                        meta: {title: '编辑自定义页面', icon: 'el-icon-user'},
-                        hidden: true
-                    },
-                ]
-            },
-            {
                 path: 'news-page',
                 name: 'NewsPage',
                 component: () => import('@/views/website/news/news-page'),
@@ -143,7 +128,28 @@ export const asyncRoutes = [
                         hidden: true
                     },
                 ]
-            }
+            },
+            {
+                path: 'contact-page',
+                name: 'ContactPage',
+                component: () => import('@/views/website/contact/contact-page'),
+                meta: {title: '联系页管理', icon: 'el-icon-s-tools'},
+            },
+            {
+                path: 'customize-page',
+                name: 'CustomizePage',
+                component: () => import('@/views/website/customize/customize-page'),
+                meta: {title: '自定义页管理', icon: 'el-icon-s-tools'},
+                children: [
+                    {
+                        path: 'customize-edit-page',
+                        name: 'CustomizeEditPage',
+                        component: () => import('@/views/website/customize/customize-edit-page'),
+                        meta: {title: '编辑自定义页面', icon: 'el-icon-user'},
+                        hidden: true
+                    },
+                ]
+            },
         ]
     },
     {

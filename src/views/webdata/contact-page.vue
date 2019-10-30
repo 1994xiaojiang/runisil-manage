@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div v-if="secondpage" class="className">
+        <div class="className">
             <el-card class="anoCard">
                 <div slot="header">
                     <span style="font-weight: 600;font-size: 20px;">联系人列表</span>
                 </div>
                 <div class="searchDiv">
-                    <el-input type="text" placeholder="请输入联系人姓名" class="input-style" v-model="sch_order"></el-input>
+                    <el-input type="text" placeholder="请输入公司名称" class="input-style" v-model="search"></el-input>
                     <el-button type="primary" icon="el-icon-search" @click="searchTab()">搜索</el-button>
                 </div>
 
@@ -117,7 +117,6 @@
                 </el-pagination>
             </el-card>
         </div>
-        <router-view v-else></router-view>
     </div>
 </template>
 
@@ -128,19 +127,12 @@
         data() {
             return {
                 tableData: [],
-                allList: [],
-                schArr:[],
-                sch_order: '',
+                search: '',
                 currentPage: 1,
                 pageSize: 10,
                 total: 0,
                 pageSizes: [10, 20, 30, 40],
                 rowIndex: 0,
-            }
-        },
-        computed:{
-            secondpage(){
-                return this.$store.state.secondpage;
             }
         },
         mounted() {
@@ -149,19 +141,17 @@
         methods: {
             handleSize(val) {
                 this.pageSize = val;
-                this.getPageData()
+                this.getPageTable()
             },
             handlePage(val) {
                 this.currentPage = val;
-                this.getPageData()
+                this.getPageTable()
             },
             getPageTable() {
                 getContactList({current:this.currentPage,size:this.pageSize},"contact")
                     .then(res => {
                         if(res.status === 'SUCCESS'){
-                            this.allList = res.data.records;
-                            this.schArr = this.allList;
-                            this.getPageData();
+                            this.tableData = res.data.records;
                             this.total = res.data.total
                         }else{
                             this.$message.error(res.msg)
@@ -170,28 +160,19 @@
                     this.$message.error(error.message)
                 })
             },
-            getPageData() {
-                let start = (this.currentPage - 1) * this.pageSize;
-                let end = start + this.pageSize;
-                this.tableData = this.schArr.slice(start, end)
-            },
             // 查找
             searchTab() {
-                // getProductsPageByValue({current:this.currentPage,size:this.pageSize},
-                //     this.sch_order,this.sch_status).then(res => {
-                //     if(res.status === 'SUCCESS'){
-                //         this.allList = res.data.records;
-                //         this.schArr = this.allList;
-                //         this.getPageData();
-                //         this.total = res.data.total
-                //     }else{
-                //         this.$message.error(res.message)
-                //     }
-                // }).catch(error =>{
-                //     this.$message.error(error.message)
-                // });
-
-                this.getPageData()
+                getContactList({current:this.currentPage,size:this.pageSize},"contact",this.search)
+                    .then(res => {
+                        if(res.status === 'SUCCESS'){
+                            this.tableData = res.data.records;
+                            this.total = res.data.total
+                        }else{
+                            this.$message.error(res.msg)
+                        }
+                    }).catch(error => {
+                    this.$message.error(error.message)
+                });
             },
         }
     }
