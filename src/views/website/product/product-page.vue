@@ -80,7 +80,7 @@
         },
         watch: {
             $route(to, from) {
-                if(to.path === '/website/product-page'){
+                if(to.path === '/runisil-manager/website/product-page'){
                     this._getPageTab2()
                 }
             }
@@ -146,7 +146,7 @@
             // add
             addTab() {
                 this.$router.push({
-                    path: "/website/product-page/product-edit-page?type=add"
+                    path: "/runisil-manager/website/product-page/product-edit-page?type=add"
                 })
             },
             toSuccess(row) {
@@ -186,7 +186,7 @@
             // 编辑
             editTable(index, row) {
                 this.$router.push({
-                    path: "/website/product-page/product-edit-page?type=edit&productId=" + row.id
+                    path: "/runisil-manager/website/product-page/product-edit-page?type=edit&productId=" + row.id
                 })
             },
         }

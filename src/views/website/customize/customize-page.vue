@@ -154,7 +154,7 @@
             // 编辑
             editTable(index, row) {
                 this.$router.push({
-                    path: "/website/customize-page/customize-edit-page?type=edit&id=" + row.id
+                    path: "/runisil-manager/website/customize-page/customize-edit-page?type=edit&id=" + row.id
                 })
             },
         }
