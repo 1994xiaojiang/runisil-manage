@@ -22,12 +22,11 @@
         watch: {
             $route(to, from) {
                 let length = to.path.split('/').length;
-                if(length === 3){
+                if(length === 4){
                     this.$store.state.secondpage = true;
-                }else if(length === 4){
+                }else if(length === 5){
                     this.$store.state.secondpage = false;
                 }
-                console.log(to.path);
             }
         },
         // components: {

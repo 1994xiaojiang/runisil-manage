@@ -4,6 +4,10 @@ export function login(data) {
     return axios.post("login", data);
 }
 
+export function loginout() {
+    return axios.post("logout");
+}
+
 export function getProducts() {
     return axios.get("api/getProducts");
 }

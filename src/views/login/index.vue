@@ -100,6 +100,7 @@
                     } else {
                         this.$store.commit("SET_TOKEN",res.data.token);
                         this.$store.state.user = res.data.user;
+                        sessionStorage.setItem("username",res.data.user.username);
                         this.$router.push('/runisil-manager');
                     }
                 }).catch(error => {
