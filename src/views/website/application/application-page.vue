@@ -82,7 +82,7 @@
         },
         watch: {
             $route(to, from) {
-                if(to.path === '/runisil-manager/website/application-page'){
+                if(to.path === '/website/application-page'){
                     this._getPageTab2()
                 }
             }

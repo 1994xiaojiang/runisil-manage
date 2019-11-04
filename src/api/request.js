@@ -44,7 +44,7 @@ service.interceptors.response.use(
                     // 返回401 清除token信息并跳转到登陆页面
                     store.commit('DEL_TOKEN');
                     router.replace({
-                        path: '/runisil-manager/login',
+                        path: '/login',
                         query: {
                             redirect: router.currentRoute.fullPath
                         }

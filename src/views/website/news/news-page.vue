@@ -100,7 +100,7 @@
         },
         watch: {
             $route(to, from) {
-                if(to.path === '/runisil-manager/website/news-page'){
+                if(to.path === '/website/news-page'){
                     this.getNewsByPage()
                 }
             }
@@ -120,7 +120,7 @@
             },
             addNews(){
                 this.$router.push({
-                    path: "/runisil-manager/website/news-page/news-edit-page?type=add"
+                    path: "/website/news-page/news-edit-page?type=add"
                 })
             },
             searchNews(){
@@ -154,7 +154,7 @@
             },
             editTable(indes,data){
                 this.$router.push({
-                    path: "/runisil-manager/website/news-page/news-edit-page?type=edit&newsId=" + data.id
+                    path: "/website/news-page/news-edit-page?type=edit&newsId=" + data.id
                 })
             },
             toDelete(data){

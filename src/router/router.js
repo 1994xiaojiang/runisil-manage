@@ -9,23 +9,23 @@ Vue.use(Router);
 
 export const currencyRoutes = [
         {
-            path: '/runisil-manager/login',
+            path: '/login',
             name: 'Login',
             component: Login,
             meta: {title: '登录页'},
             hidden: true
         },
         {
-            path: '/runisil-manager/404',
+            path: '/404',
             name: '404',
             component: () => import('@/views/error-page/404.vue'),
             hidden: true
         },
         {
-            path: '/runisil-manager/',
+            path: '/',
             name: 'home',
             component: Layout,
-            redirect: '/runisil-manager/dashbord',
+            redirect: '/dashbord',
             children: [
                 {
                     path: 'dashbord',
@@ -39,10 +39,10 @@ export const currencyRoutes = [
 
 export const asyncRoutes = [
     {
-        path: '/runisil-manager/webdata',
+        path: '/webdata',
         name: 'Webdata',
         component: Layout,
-        redirect: '/runisil-manager/webdata/contact-page',
+        redirect: '/webdata/contact-page',
         meta: { title: '网站资源', icon: 'el-icon-lock'},
         children: [
             {
@@ -72,10 +72,10 @@ export const asyncRoutes = [
         ]
     },
     {
-        path: '/runisil-manager/website',
+        path: '/website',
         name: 'Website',
         component: Layout,
-        redirect: '/runisil-manager/website/product-page',
+        redirect: '/website/product-page',
         meta: {title: '网站管理', icon: 'el-icon-lock'},
         children: [
             {
@@ -153,10 +153,10 @@ export const asyncRoutes = [
         ]
     },
     {
-        path: '/runisil-manager/permission',
+        path: '/permission',
         name: 'Permission',
         component: Layout,
-        redirect: '/runisil-manager/permission/page-user',
+        redirect: '/permission/page-user',
         meta: {title: '权限许可', icon: 'el-icon-lock'},
         children: [
             {
@@ -196,7 +196,7 @@ export function resetRouter() {
 
 // 导航守卫
 router.beforeEach(async (to, from, next) => {
-    if (to.path === '/runisil-manager/login') {
+    if (to.path === '/login') {
         next()
     } else {
         if (store.getters.token) {
@@ -225,7 +225,7 @@ router.beforeEach(async (to, from, next) => {
             // }
         } else {
             next({
-                path: '/runisil-manager/login',
+                path: '/login',
                 query: {
                     redirect: to.fullPath
                 }
