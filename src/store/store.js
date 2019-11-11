@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        token: sessionStorage.getItem('token') ? sessionStorage.getItem('token') : '',
+        token: localStorage.getItem('token') ? localStorage.getItem('token') : '',
         user: {},
         opened: sessionStorage.getItem('open')
             ? sessionStorage.getItem('open')
@@ -16,7 +16,7 @@ export default new Vuex.Store({
     mutations: {
         SET_TOKEN(state, val) {
             state.token = val;
-            sessionStorage.setItem('token', val)
+            localStorage.setItem('token', val)
         },
         SET_OPENED(state, payload) {
             state.opened = String(payload);
@@ -26,7 +26,7 @@ export default new Vuex.Store({
             state.token = '';
             state.user = {};
             state.opened = '';
-            sessionStorage.removeItem('token')
+            localStorage.removeItem('token')
         }
     },
     actions: {},

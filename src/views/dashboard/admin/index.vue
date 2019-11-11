@@ -8,10 +8,10 @@
             <count-to
               class="cardItem_p0 color-green1"
               :startVal="startVal"
-              :endVal="vistors"
+              :endVal="allvistors"
               :duration="2000"
             ></count-to>
-            <p class="cardItem_p1">Total Visitors</p>
+            <p class="cardItem_p1">总访客数</p>
           </div>
           <div class="cardItem_icon">
             <i class="el-icon-user color-green1"></i>
@@ -24,10 +24,10 @@
             <count-to
               class="cardItem_p0 color-blue"
               :startVal="startVal"
-              :endVal="message"
+              :endVal="vistors"
               :duration="2000"
             ></count-to>
-            <p class="cardItem_p1">Messages</p>
+            <p class="cardItem_p1">今日访客数</p>
           </div>
           <div class="cardItem_icon">
             <i class="el-icon-s-comment color-blue"></i>
@@ -40,13 +40,13 @@
             <count-to
               class="cardItem_p0 color-red"
               :startVal="startVal"
-              :endVal="order"
+              :endVal="allpv"
               :duration="2000"
             ></count-to>
-            <p class="cardItem_p1">Total Order Placeed</p>
+            <p class="cardItem_p1">总浏览量</p>
           </div>
           <div class="cardItem_icon">
-            <i class="el-icon-shopping-cart-2 color-red"></i>
+            <i class="el-icon-view color-red"></i>
           </div>
         </div>
       </el-col>
@@ -56,10 +56,10 @@
             <count-to
               class="cardItem_p0 color-green2"
               :startVal="startVal"
-              :endVal="profit"
+              :endVal="pv"
               :duration="2000"
             ></count-to>
-            <p class="cardItem_p1">Total Profit</p>
+            <p class="cardItem_p1">今日浏览量</p>
           </div>
           <div class="cardItem_icon">
             <i class="el-icon-wallet color-green2"></i>
@@ -93,26 +93,26 @@ import LineCharts from './components/LineCharts'
 import PieCharts from './components/PieCharts'
 import TableShow from './components/TableShow'
 import BarCharts from './components/BarCharts'
-// import {
-//   getCardsData,
-//   getTableData,
-//   getLineData,
-//   getBarData
-// } from '@/api/dashboard'
+import {
+  getCardsData,
+  getTableData,
+  getLineData,
+  getBarData
+} from '@/api/dashboard'
 export default {
   data() {
     return {
       startVal: 0,
+      allvistors: 0,
       vistors: 0,
-      message: 0,
-      order: 0,
-      profit: 0,
+      allpv: 0,
+      pv: 0,
       tableData: [],
       lineChartData: {},
       barData: {}
     }
   },
-  created() {
+  mounted() {
     this._getAllData()
   },
   components: {
@@ -124,19 +124,19 @@ export default {
   },
   methods: {
     _getAllData() {
-      // this.$http
-      //   .all([getCardsData(), getLineData(), getTableData(), getBarData()])
-      //   .then(
-      //     this.$http.spread((cardData, lineData, tabData, barData) => {
-      //       this.vistors = cardData.data.vistors
-      //       this.message = cardData.data.message
-      //       this.order = cardData.data.order
-      //       this.profit = cardData.data.profit
-      //       this.lineChartData = lineData.data
-      //       ;(this.tableData = tabData.data.tableList),
-      //         (this.barData = barData.data)
-      //     })
-      //   )
+        getCardsData().then(res=>{
+          if("SUCCESS" === res.status){
+            this.allpv = res.data.allPv;
+            this.pv = res.data.pv;
+            this.allvistors = res.data.allUv;
+            this.vistors = res.data.uv;
+          }
+        });
+      getBarData().then(res=>{
+        if("SUCCESS" === res.status){
+          this.lineChartData = res.data;
+        }
+      })
     }
   }
 }

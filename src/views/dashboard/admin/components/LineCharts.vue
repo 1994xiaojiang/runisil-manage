@@ -36,7 +36,7 @@ export default {
     lineChartData: {
       deep: true,
       handler(val) {
-        this._setOption(val.inPrice, val.outPrice)
+        this._setOption(val.value, val.date)
       }
     }
   },
@@ -49,13 +49,13 @@ export default {
     initEcharts() {
       this.mycharts = echarts.init(this.$refs.myCharts, 'macarons')
       if (Object.keys(this.lineChartData).length > 0) {
-        this._setOption(this.lineChartData.inPrice, this.lineChartData.outPrice)
+        this._setOption(this.lineChartData.value, this.lineChartData.date)
       }
     },
-    _setOption(inprice = [], outprice = []) {
+    _setOption(value = [], date = []) {
       this.mycharts.setOption({
         title: {
-          text: 'Statistics',
+          text: '最近7天浏览量趋势',
           left: '16'
         },
         tooltip: {
@@ -68,11 +68,11 @@ export default {
           }
         },
         legend: {
-          data: ['收入', '支出']
+          data: ['浏览量']
         },
         grid: {
           left: '20',
-          right: '20',
+          right: '50',
           bottom: '3',
           containLabel: true
         },
@@ -80,7 +80,7 @@ export default {
           {
             type: 'category',
             boundaryGap: false,
-            data: ['1月', '2月', '3月', '4月', '5月', '6月']
+            data: date
           }
         ],
         yAxis: [
@@ -90,7 +90,7 @@ export default {
         ],
         series: [
           {
-            name: '收入',
+            name: '浏览量',
             type: 'line',
             // areaStyle: {
             //   color: '#f4516c',
@@ -103,25 +103,7 @@ export default {
               color: '#f4516c'
             },
             smooth: true,
-            data: inprice,
-            animationDuration: 2800,
-            animationEasing: 'quadraticOut'
-          },
-          {
-            name: '支出',
-            type: 'line',
-            // areaStyle: {
-            //   color: '#55a8fd',
-            //   opacity: 0.3
-            // },
-            itemStyle: {
-              color: '#55a8fd'
-            },
-            lineStyle: {
-              color: '#55a8fd'
-            },
-            smooth: true,
-            data: outprice,
+            data: value,
             animationDuration: 2800,
             animationEasing: 'quadraticOut'
           }
