@@ -199,7 +199,7 @@
                         let form = new FormData();
                         // 图片对象
                         form.append("file", fileObj);
-                        form.append("groupName", this.form.name);
+                        form.append("groupName", this.ruleForm.groupName);
                         let self = this;
                         uploadImage(form).then((res) => {
                             if (res.status === 'SUCCESS') {
