@@ -1,0 +1,16 @@
+{
+  "id": "1503679",
+  "name": "v-icon-m",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "10139823",
+      "name": "view",
+      "font_class": "view",
+      "unicode": "e692",
+      "unicode_decimal": 59026
+    }
+  ]
+}

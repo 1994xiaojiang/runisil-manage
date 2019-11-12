@@ -1,21 +1,13 @@
 <template>
-  <div>
+  <div class="tableShow">
     <el-table
       :data="tableData"
       border
-      style="width: 96%;box-shadow: 0 0 10px #e2e2e2;"
-    >
+      style="width: 96%;box-shadow: 0 0 10px #e2e2e2;height: 390px;">
       <el-table-column prop="id" label="ID#" width="180"></el-table-column>
-      <el-table-column prop="name" label="产品名称"></el-table-column>
-      <el-table-column prop="price" label="价格"></el-table-column>
-      <el-table-column prop="quantity" label="数量"></el-table-column>
-      <el-table-column prop="status" label="状态">
-        <template slot-scope="scope">
-          <el-tag :type="scope.row.status | tagClass">{{
-            scope.row.status | statusText
-          }}</el-tag>
-        </template>
-      </el-table-column>
+      <el-table-column prop="ip" label="IP地址"></el-table-column>
+      <el-table-column prop="country" label="国家"></el-table-column>
+      <el-table-column prop="statytime" label="停留时长（毫秒/ms）"></el-table-column>
     </el-table>
   </div>
 </template>
@@ -27,28 +19,11 @@ export default {
       type: Array,
       required: true
     }
-  },
-  filters: {
-    statusText(val) {
-      if (val === undefined) return
-      if (val === 0) {
-        return '草稿'
-      } else if (val === 1) {
-        return '发布中'
-      } else if (val === 2){
-        return '已下架'
-      }
-    },
-    tagClass(val) {
-      if (val === undefined) return
-      if (val === 0) {
-        return 'warning'
-      } else if (val === 1) {
-        return 'success'
-      } else if (val === 2){
-        return 'danger'
-      }
-    }
   }
 }
 </script>
+<style>
+  .tableShow {
+
+  }
+</style>

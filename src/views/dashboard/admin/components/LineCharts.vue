@@ -2,8 +2,7 @@
   <div
     class="lineCharts"
     :style="{ width: width, height: height }"
-    ref="myCharts"
-  ></div>
+    ref="myCharts"></div>
 </template>
 
 <script>

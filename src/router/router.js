@@ -31,7 +31,7 @@ export const currencyRoutes = [
                     path: 'dashbord',
                     name: 'Dashbord',
                     component: () => import('@/views/dashboard'),
-                    meta: {title: '首页', icon: 'el-icon-s-data'}
+                    meta: {title: '首页', icon: 'el-icon-s-home'}
                 }
             ]
         },
@@ -49,25 +49,25 @@ export const asyncRoutes = [
                 path: 'contact-page',
                 name: 'ContactPage',
                 component: () => import('@/views/webdata/contact-page'),
-                meta: {title: '联系人列表', icon: 'el-icon-s-tools'}
+                meta: {title: '联系人列表', icon: 'el-icon-user'}
             },
             {
                 path: 'order-list',
                 name: 'OrderList',
                 component: () => import('@/views/webdata/order-list'),
-                meta: {title: '样品订单列表', icon: 'el-icon-s-tools'}
+                meta: {title: '样品订单列表', icon: 'el-icon-s-order'}
             },
             {
                 path: 'file-list',
                 name: 'FileList',
                 component: () => import('@/views/webdata/file-list'),
-                meta: {title: '文件管理', icon: 'el-icon-s-tools'}
+                meta: {title: '文件管理', icon: 'el-icon-files'}
             },
             {
                 path: 'image-list',
                 name: 'ImageList',
                 component: () => import('@/views/webdata/image-list'),
-                meta: {title: '图片管理', icon: 'el-icon-s-tools'}
+                meta: {title: '图片管理', icon: 'el-icon-picture-outline'}
             }
         ]
     },
