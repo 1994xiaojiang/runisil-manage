@@ -83,7 +83,7 @@
                 <bar-os-charts class="bar-os-charts" :barOsData="barOsData"></bar-os-charts>
             </el-col>
             <el-col :span="12">
-                <bar-browers-charts class="bar-browers-charts" :barBrowersData="barBrowersData"></bar-browers-charts>
+                <bar-browers-charts class="bar-browers-charts" :barBrowserData="barBrowserData"></bar-browers-charts>
             </el-col>
         </el-row>
         <!-- end -->
@@ -115,7 +115,7 @@
                 tableData: [],
                 lineChartData: {},
                 barOsData: {},
-                barBrowersData:{}
+                barBrowserData:{}
             }
         },
         mounted() {
@@ -147,6 +147,13 @@
                 getTableData().then(res => {
                     if ("SUCCESS" === res.status) {
                         this.tableData = res.data;
+                    }
+                });
+                getOsAndBrowersData().then(res =>{
+                    if ("SUCCESS" === res.status) {
+                        this.barOsData = res.data.osdata;
+                        this.barBrowserData = res.data.browserdata
+                        console.log(this.barOsData,this.barBrowserData)
                     }
                 })
             }

@@ -19,7 +19,7 @@
                 type: String,
                 default: '350px'
             },
-            barBrowersData: {
+            barBrowserData: {
                 type: Object,
                 required: true
             }
@@ -30,7 +30,7 @@
             }
         },
         watch: {
-            barBrowersData: {
+            barBrowserData: {
                 deep: true,
                 handler(val) {
                     this._setOption(val)
@@ -45,7 +45,7 @@
         methods: {
             initEcharts() {
                 this.mycharts = echarts.init(this.$refs.myCharts, 'macarons');
-                this._setOption(this.barBrowersData)
+                this._setOption(this.barBrowserData)
             },
             _setOption(obj) {
                 this.mycharts.setOption({
@@ -74,7 +74,7 @@
                     yAxis: [
                         {
                             type: 'category',
-                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            data: obj.browser,
                             axisTick: {
                                 alignWithLabel: true
                             }
@@ -84,8 +84,8 @@
                         {
                             name: '浏览器',
                             type: 'bar',
-                            barWidth: '60%',
-                            data: [10, 52, 200, 334, 390, 330, 220]
+                            barWidth: '30%',
+                            data: obj.browserCount
                         }
                     ]
                 })

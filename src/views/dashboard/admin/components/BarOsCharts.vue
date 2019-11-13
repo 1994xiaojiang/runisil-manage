@@ -53,7 +53,7 @@
                         text: '操作系统TOP10',
                         subtext: '浏览量TOP10操作系统'
                     },
-                    color: ['#db356e'],
+                    color: ['#5ab1ef'],
                     tooltip: {
                         trigger: 'axis',
                         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -69,7 +69,7 @@
                     xAxis: [
                         {
                             type: 'category',
-                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            data: obj.os,
                             axisTick: {
                                 alignWithLabel: true
                             }
@@ -84,8 +84,8 @@
                         {
                             name: '操作系统',
                             type: 'bar',
-                            barWidth: '60%',
-                            data: [10, 52, 200, 334, 390, 330, 220]
+                            barWidth: '30%',
+                            data: obj.osCount
                         }
                     ]
                 })
