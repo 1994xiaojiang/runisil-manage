@@ -223,7 +223,7 @@
                                 });
                                 this.getFilesList();
                                 this.dialogVisible = false;
-                                this.$refs[formName].resetFields();
+                                this.$refs['ruleForm'].resetFields();
                                 this.$refs.fileUpload.clearFiles();
                             }
                             else {

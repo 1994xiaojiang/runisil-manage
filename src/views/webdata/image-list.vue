@@ -197,9 +197,9 @@
                         let fileObj = param.file;
                         // FormData 对象
                         let form = new FormData();
+                        form.append("groupName", this.ruleForm.groupName);
                         // 图片对象
                         form.append("file", fileObj);
-                        form.append("groupName", this.ruleForm.groupName);
                         let self = this;
                         uploadImage(form).then((res) => {
                             if (res.status === 'SUCCESS') {
@@ -209,6 +209,7 @@
                                 });
                                 this.getImagesList();
                                 this.dialogVisible = false;
+                                this.$refs['ruleForm'].resetFields();
                                 this.$refs.imageUpload.clearFiles();
                             }
                             else {

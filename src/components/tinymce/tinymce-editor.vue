@@ -67,9 +67,6 @@
                     menubar: false,
                     //此处为图片上传处理函数
                     images_upload_handler: (blobInfo, success, failure) => {
-                        if (blobInfo.blob().size > (50*1024)) {
-                            failure('文件体积过大')
-                        }
                         if (this.imageType.indexOf(blobInfo.blob().type) >= 0) {
                             let formData = new FormData();
                             // 服务端接收文件的参数名，文件数据，文件名
