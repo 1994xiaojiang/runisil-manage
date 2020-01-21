@@ -58,7 +58,7 @@
                         <p class="cardItem_p1">今日浏览量</p>
                     </div>
                     <div class="cardItem_icon">
-                        <i class="v-icon-m-icon-view color-green2"></i>
+                        <i class="iconfont icon-view color-green2"></i>
                     </div>
                 </div>
             </el-col>

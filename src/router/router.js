@@ -31,7 +31,7 @@ export const currencyRoutes = [
                     path: 'dashbord',
                     name: 'Dashbord',
                     component: () => import('@/views/dashboard'),
-                    meta: {title: '首页', icon: 'el-icon-s-home'}
+                    meta: {title: '仪表盘', icon: 'iconfont icon-yibiaopan'}
                 }
             ]
         },
@@ -43,31 +43,31 @@ export const asyncRoutes = [
         name: 'Webdata',
         component: Layout,
         redirect: '/webdata/contact-page',
-        meta: { title: '网站资源', icon: 'el-icon-lock'},
+        meta: { title: '网站资源', icon: 'iconfont icon-ziyuanguanli'},
         children: [
             {
                 path: 'contact-page',
                 name: 'ContactPage',
                 component: () => import('@/views/webdata/contact-page'),
-                meta: {title: '联系人列表', icon: 'el-icon-user'}
+                meta: {title: '联系人列表', icon: 'iconfont icon-lianxiren'}
             },
             {
                 path: 'order-list',
                 name: 'OrderList',
                 component: () => import('@/views/webdata/order-list'),
-                meta: {title: '样品订单列表', icon: 'el-icon-s-order'}
+                meta: {title: '订阅查询列表', icon: 'iconfont icon-dingdan'}
             },
             {
                 path: 'file-list',
                 name: 'FileList',
                 component: () => import('@/views/webdata/file-list'),
-                meta: {title: '文件管理', icon: 'el-icon-files'}
+                meta: {title: '文件管理', icon: 'iconfont icon-wenjian'}
             },
             {
                 path: 'image-list',
                 name: 'ImageList',
                 component: () => import('@/views/webdata/image-list'),
-                meta: {title: '图片管理', icon: 'el-icon-picture-outline'}
+                meta: {title: '图片管理', icon: 'iconfont icon-tupian'}
             }
         ]
     },
@@ -76,19 +76,19 @@ export const asyncRoutes = [
         name: 'Website',
         component: Layout,
         redirect: '/website/product-page',
-        meta: {title: '网站管理', icon: 'el-icon-lock'},
+        meta: {title: '网站管理', icon: 'iconfont icon-icon_xinyong_xianxing_jijin-'},
         children: [
             {
                 path: 'home-page',
                 name: 'HomePage',
                 component: () => import('@/views/website/home/home-page'),
-                meta: {title: '首页管理', icon: 'el-icon-user'}
+                meta: {title: '首页管理', icon: 'iconfont icon-shouyeguanli'}
             },
             {
                 path: 'product-page',
                 name: 'ProductPage',
                 component: () => import('@/views/website/product/product-page'),
-                meta: {title: '产品页管理', icon: 'el-icon-user'},
+                meta: {title: '产品页管理', icon: 'iconfont icon-chanpin'},
                 children: [
                     {
                         path: 'product-edit-page',
@@ -103,7 +103,7 @@ export const asyncRoutes = [
                 path: 'news-page',
                 name: 'NewsPage',
                 component: () => import('@/views/website/news/news-page'),
-                meta: {title: '新闻页管理', icon: 'el-icon-s-tools'},
+                meta: {title: '新闻页管理', icon: 'iconfont icon-news_icon'},
                 children: [
                     {
                         path: 'news-edit-page',
@@ -118,7 +118,7 @@ export const asyncRoutes = [
                 path: 'application-page',
                 name: 'ApplicationPage',
                 component: () => import('@/views/website/application/application-page'),
-                meta: {title: '应用页管理', icon: 'el-icon-s-tools'},
+                meta: {title: '应用页管理', icon: 'iconfont icon-applications'},
                 children: [
                     {
                         path: 'application-edit-page',
@@ -133,13 +133,13 @@ export const asyncRoutes = [
                 path: 'contact-page',
                 name: 'ContactPage',
                 component: () => import('@/views/website/contact/contact-page'),
-                meta: {title: '联系页管理', icon: 'el-icon-s-tools'},
+                meta: {title: '联系页管理', icon: 'iconfont icon-lianxi'},
             },
             {
                 path: 'customize-page',
                 name: 'CustomizePage',
                 component: () => import('@/views/website/customize/customize-page'),
-                meta: {title: '自定义页管理', icon: 'el-icon-s-tools'},
+                meta: {title: '自定义页管理', icon: 'iconfont icon-zidingyi'},
                 children: [
                     {
                         path: 'customize-edit-page',
@@ -157,19 +157,19 @@ export const asyncRoutes = [
         name: 'Permission',
         component: Layout,
         redirect: '/permission/page-user',
-        meta: {title: '权限许可', icon: 'el-icon-lock'},
+        meta: {title: '权限许可', icon: 'iconfont icon-authority'},
         children: [
             {
                 path: 'page-user',
                 name: 'PageUser',
                 component: () => import('@/views/permission/page-user'),
-                meta: {title: '用户管理', icon: 'el-icon-user'}
+                meta: {title: '用户管理', icon: 'iconfont icon-yonghuguanli'}
             },
             {
                 path: 'roles',
                 name: 'Roles',
                 component: () => import('@/views/permission/roles'),
-                meta: {title: '权限设置', icon: 'el-icon-s-tools'}
+                meta: {title: '权限设置', icon: 'iconfont icon-quanxianguanli'}
             }
         ]
     },

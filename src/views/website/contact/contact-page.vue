@@ -14,12 +14,12 @@
                 <el-table :data="tableData" border stripe>
                     <el-table-column prop="id" label="ID" width="80"></el-table-column>
                     <el-table-column prop="name" label="公司名称" width="250" show-overflow-tooltip></el-table-column>
-                    <el-table-column prop="address" label="地址" show-overflow-tooltip></el-table-column>
+                    <el-table-column prop="address" label="说明" show-overflow-tooltip></el-table-column>
                     <el-table-column prop="email" label="邮箱" width="200"></el-table-column>
-                    <el-table-column prop="fax" label="传真" width="150"></el-table-column>
                     <el-table-column prop="phone" label="电话" width="150"></el-table-column>
-                    <el-table-column prop="region" label="地区" width="100"></el-table-column>
+                    <el-table-column prop="fax" label="传真" width="150"></el-table-column>
                     <el-table-column prop="country" label="国家" width="100"></el-table-column>
+                    <el-table-column prop="region" label="地区" width="150"></el-table-column>
                     <el-table-column label="操作" width="150">
                         <template slot-scope="scope">
                             <el-button type="primary" @click="editContactInfo(scope.$index, scope.row)">编辑</el-button>
@@ -46,9 +46,9 @@
                     </el-form-item>
                     <el-form-item
                             prop="address"
-                            label="地址"
+                            label="说明"
                             :rules="[
-                              { required: true, message: '请输入公司地址', trigger: 'blur' },
+                              { required: true, message: '请输入详细说明', trigger: 'blur' },
                             ]">
                         <el-input type="textarea" v-model="form.address"></el-input>
                     </el-form-item>
@@ -62,14 +62,6 @@
                         <el-input v-model="form.email"></el-input>
                     </el-form-item>
                     <el-form-item
-                            prop="fax"
-                            label="传真"
-                            :rules="[
-                              { required: true, message: '请输入传真', trigger: 'blur' },
-                            ]">
-                        <el-input v-model="form.fax"></el-input>
-                    </el-form-item>
-                    <el-form-item
                             prop="phone"
                             label="联系电话"
                             :rules="[
@@ -78,12 +70,9 @@
                         <el-input v-model="form.phone"></el-input>
                     </el-form-item>
                     <el-form-item
-                            prop="region"
-                            label="地区"
-                            :rules="[
-                              { required: true, message: '请输入地区', trigger: 'blur' },
-                            ]">
-                        <el-input v-model="form.region"></el-input>
+                            prop="fax"
+                            label="传真">
+                        <el-input v-model="form.fax"></el-input>
                     </el-form-item>
                     <el-form-item
                             prop="country"
@@ -93,11 +82,18 @@
                             ]">
                         <el-input v-model="form.country"></el-input>
                     </el-form-item>
+                    <el-form-item
+                            prop="region"
+                            label="地区"
+                            :rules="[
+                              { required: true, message: '请输入地区', trigger: 'blur' },
+                            ]">
+                        <el-input v-model="form.region"></el-input>
+                    </el-form-item>
 
                     <el-form-item style="text-align: center;">
                         <el-button @click="resetForm('form')">重置</el-button>
                         <el-button type="primary" @click="submitForm('form')">提交</el-button>
-
                     </el-form-item>
                 </el-form>
 

@@ -8,11 +8,11 @@ export function getContactList(param,type,search) {
     }
 }
 
-export function getSampleOrderList(param) {
+export function getSubscribeInquiryList(param) {
     if(param.search){
-        return axios.get("manager/getSampleOrderList?current=" + param.current + "&size=" + param.size + "&search=" + param.search);
+        return axios.get("manager/getSubscribeInquiryInfo?current=" + param.current + "&size=" + param.size + "&search=" + param.search);
     }else{
-        return axios.get("manager/getSampleOrderList?current=" + param.current + "&size=" + param.size);
+        return axios.get("manager/getSubscribeInquiryInfo?current=" + param.current + "&size=" + param.size);
     }
 }
 
